@@ -1,0 +1,19 @@
+{
+  "name": "redux-todo-goals-app",
+  "version": "1.0.0",
+  "description": "Todo/Goals application made with 💜  and Redux 🏆",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoolTheba/redux-todo-goals-app.git"
+  },
+  "author": "KoolTheba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KoolTheba/redux-todo-goals-app/issues"
+  },
+  "homepage": "https://github.com/KoolTheba/redux-todo-goals-app#readme"
+}
