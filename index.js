@@ -24,6 +24,13 @@ function goals (state = [], action){
     }
 }
 
+function app (state = {}, action){
+    return {
+        todos: todos(state.todos, action),
+        goals: goals(state.goals, action)
+    }
+}
+
 function createStore (reducer) {
     let state
     let listeners = []
@@ -49,3 +56,5 @@ function createStore (reducer) {
         dispatch
     }
 }
+
+// const store = createStore(app)
