@@ -1,3 +1,20 @@
+// const action = {
+//     type: 'ADD_TODO',
+//     todo: {
+//         id: 0,
+//         name: 'Learn Redux',
+//         complete: false
+//     }
+// }
+
+// Reducer function
+function todos (state = [], action) {
+    if(action.type === 'ADD_TODO'){
+        return state.concat([action.todo])
+    }
+    return state
+}
+
 function createStore () {
     let state
     let listeners = []
@@ -11,8 +28,15 @@ function createStore () {
         }
     }
 
+    const dispatch = (action) => {
+        state = todos(state, action)
+        // updates all subscribers
+        listeners.forEach((listener) => listener())
+    }
+
     return {
         getState,
-        subscribe
+        subscribe,
+        dispatch
     }
 }
