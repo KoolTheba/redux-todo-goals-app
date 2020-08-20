@@ -138,4 +138,4 @@ store.dispatch(addGoalAction({
     name: 'Lose 20 pounds'
 }))
 
-store.removeGoalAction(0)
+store.dispatch(removeGoalAction(0))
