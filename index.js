@@ -1,30 +1,3 @@
-// Library code
-function createStore (reducer) {
-    let state
-    let listeners = []
-
-    const getState = () => state
-
-    const subscribe = (listener) => {
-        listeners.push(listener)
-        return () => {
-            listeners = listeners.filter(l => l !== listener)
-        }
-    }
-
-    const dispatch = (action) => {
-        state = reducer(state, action)
-        // updates all subscribers
-        listeners.forEach((listener) => listener())
-    }
-
-    return {
-        getState,
-        subscribe,
-        dispatch
-    }
-}
-
 // App code
 const ADD_TODO = 'ADD_TODO'
 const REMOVE_TODO = 'REMOVE_TODO'
@@ -75,6 +48,36 @@ function toggleGoalAction(id){
     }
 }
 
+// Middlewares
+const checker = (store) => (next) => (action) => {
+    if(
+        action.type === ADD_TODO &&
+        action.todo.name.toLowerCase().indexOf('bitcoin') !== -1
+    ){
+        return alert('Nope! its a bad idea')
+    }
+
+    if(
+        action.type === ADD_GOAL &&
+        action.goal.name.toLowerCase().indexOf('bitcoin') !== -1
+    ){
+        return alert('Nope! its a bad idea')
+    }
+
+    return next(action)
+}
+
+const logger = (store) => (next) => (action) => {
+    console.group(action.type)
+    console.log('The action: ', action)
+    const result = next(action)
+    console.log('The new state: ', store.getState())
+    console.groupEnd()
+
+    return result
+}
+
+// Reducer functions
 function todos (state = [], action) {
     switch(action.type){
         case ADD_TODO:
@@ -105,14 +108,10 @@ function goals (state = [], action){
     }
 }
 
-function app (state = {}, action){
-    return {
-        todos: todos(state.todos, action),
-        goals: goals(state.goals, action)
-    }
-}
-
-const store = createStore(app)
+const store = Redux.createStore(Redux.combineReducers({
+    todos,
+    goals,
+}), Redux.applyMiddleware(checker, logger))
 
 store.subscribe(() => {
     const { goals, todos } = store.getState()
