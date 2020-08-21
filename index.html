@@ -79,6 +79,9 @@
         node.appendChild(removeTodoBtn)
 
         node.style.textDecoration = todo.complete ? 'line-through' : 'none'
+        node.addEventListener('click', () => {
+            store.dispatch(toggleTodoAction(todo.id))
+        })
         
         document.getElementById('todos')
         .appendChild(node)
@@ -93,6 +96,11 @@
 
         node.append(text)
         node.appendChild(removeGoalBtn)
+
+        node.style.textDecoration = goal.complete ? 'line-through' : 'none'
+        node.addEventListener('click', () => {
+            store.dispatch(toggleGoalAction(goal.id))
+        })
 
         document.getElementById('goals')
         .appendChild(node)
