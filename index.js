@@ -4,6 +4,7 @@ const REMOVE_TODO = 'REMOVE_TODO'
 const TOGGLE_TODO = 'TOGGLE_TODO'
 const ADD_GOAL = 'ADD_GOAL'
 const REMOVE_GOAL = 'REMOVE_GOAL'
+const TOGGLE_GOAL = 'TOGGLE_GOAL'
 
 function addTodoAction(todo){
     return{
@@ -36,6 +37,13 @@ function addGoalAction(goal){
 function removeGoalAction(id){
     return {
         type: REMOVE_GOAL,
+        id,
+    }
+}
+
+function toggleGoalAction(id){
+    return{
+        type: TOGGLE_GOAL,
         id,
     }
 }
@@ -91,6 +99,10 @@ function goals (state = [], action){
             return state.concat([action.goal])
         case REMOVE_GOAL:
             return state.filter(goal => goal.id !== action.id)
+        case TOGGLE_GOAL:
+            return state.map(goal => goal.id !== action.id ? goal :
+                Object.assign({}, goal, {complete: !goal.complete})
+            )
         default:
             return state
     }
