@@ -71,16 +71,18 @@
 
     function addTodoToDOM (todo){
         const node = document.createElement('li')
+        const textNode = document.createElement('span')
         const text = document.createTextNode(todo.name)
         const removeTodoBtn = createRemoveButton(() => {
             store.dispatch(removeTodoAction(todo.id))
         })
 
-        node.append(text)
+        node.appendChild(textNode)
         node.appendChild(removeTodoBtn)
+        textNode.appendChild(text)
 
-        node.style.textDecoration = todo.complete ? 'line-through' : 'none'
-        node.addEventListener('click', () => {
+        textNode.style.textDecoration = todo.complete ? 'line-through' : 'none'
+        textNode.addEventListener('click', () => {
             store.dispatch(toggleTodoAction(todo.id))
         })
         
@@ -90,16 +92,18 @@
 
     function addGoalToDOM (goal){
         const node = document.createElement('li')
+        const textNode = document.createElement('span')
         const text = document.createTextNode(goal.name)
         const removeGoalBtn = createRemoveButton(() => {
             store.dispatch(removeGoalAction(goal.id))
         })
 
-        node.append(text)
+        node.appendChild(textNode)
         node.appendChild(removeGoalBtn)
+        textNode.appendChild(text)
 
-        node.style.textDecoration = goal.complete ? 'line-through' : 'none'
-        node.addEventListener('click', () => {
+        textNode.style.textDecoration = goal.complete ? 'line-through' : 'none'
+        textNode.addEventListener('click', () => {
             store.dispatch(toggleGoalAction(goal.id))
         })
 
