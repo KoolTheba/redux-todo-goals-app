@@ -5,6 +5,7 @@ const TOGGLE_TODO = 'TOGGLE_TODO'
 const ADD_GOAL = 'ADD_GOAL'
 const REMOVE_GOAL = 'REMOVE_GOAL'
 const TOGGLE_GOAL = 'TOGGLE_GOAL'
+const RECEIVE_DATA = 'RECEIVE_DATA'
 
 function addTodoAction(todo){
     return{
@@ -48,6 +49,14 @@ function toggleGoalAction(id){
     }
 }
 
+function receiveDataAction(todos, goals){
+    return {
+        type: RECEIVE_DATA,
+        todos,
+        goals
+    }
+}
+
 // Middlewares
 const checker = (store) => (next) => (action) => {
     if(
@@ -88,6 +97,8 @@ function todos (state = [], action) {
             return state.map(todo => todo.id !== action.id ? todo : 
                 Object.assign({}, todo, {complete: !todo.complete})    
             )
+        case RECEIVE_DATA:
+            return action.todos
         default:
             return state
     }
@@ -103,6 +114,8 @@ function goals (state = [], action){
             return state.map(goal => goal.id !== action.id ? goal :
                 Object.assign({}, goal, {complete: !goal.complete})
             )
+        case RECEIVE_DATA:
+            return action.goals
         default:
             return state
     }

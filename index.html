@@ -7,6 +7,7 @@
   <script src='https://unpkg.com/react@16.13.1/umd/react.development.js'></script>
   <script src='https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js'></script>
   <script src='https://unpkg.com/babel-standalone@6.26.0/babel.min.js'></script>
+  <script src='https://ui.dev/goals-todos-api/index.js'></script>
   <meta name="description" content="Redux TODO/Goals app">
   <meta name="author" content="KoolTheba">
   <link rel="stylesheet" href="css/styles.css">
@@ -135,6 +136,14 @@
 
         componentDidMount () {
             const { store } = this.props
+
+            Promise.all([
+                API.fetchTodos(),
+                API.fetchGoals(),
+            ]).then(([todos, goals]) => {
+                store.dispatch(receiveDataAction(todos, goals))
+            })
+
             store.subscribe(() => this.forceUpdate())
         }
 
