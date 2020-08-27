@@ -197,4 +197,4 @@ const store = Redux.createStore(Redux.combineReducers({
     todos,
     goals,
     loading
-}), Redux.applyMiddleware(thunk, checker, logger))
+}), Redux.applyMiddleware(ReduxThunk.default, checker, logger))
