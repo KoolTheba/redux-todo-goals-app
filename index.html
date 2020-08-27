@@ -127,7 +127,14 @@
             <ul>
                 {props.items.map((item) => (
                     <li key={item.id}>
-                        <span>{item.name}</span>
+                        <span 
+                            onClick={() => props.toggle(item.id)}
+                            style={{textDecoration:
+                                item.complete
+                                ? 'line-through' 
+                                : 'none' }}
+                        >{item.name}
+                        </span>
                         <button onClick={() => props.remove(item)}>Remove</button>
                     </li>
                 ))}
@@ -136,10 +143,6 @@
     }
 
     class Todos extends React.Component {
-        
-        removeItem = (todo) => {
-            this.props.store.dispatch(removeTodoAction(todo.id))
-        }
 
         addItem = (e) => {
             e.preventDefault()
@@ -151,6 +154,14 @@
                 name,
                 complete: false
             }))
+        }
+
+        removeItem = (todo) => {
+            this.props.store.dispatch(removeTodoAction(todo.id))
+        }
+
+        toggleItem = (id) => {
+            this.props.store.dispatch(toggleTodoAction(id))
         }
 
         render(){
@@ -169,6 +180,7 @@
                     <List 
                         items={this.props.todos}
                         remove={this.removeItem}
+                        toggle={this.toggleItem}
                     />
                 </div>
             )
@@ -176,10 +188,6 @@
     }
 
     class Goals extends React.Component {
-
-        removeItem = (goal) => {
-            this.props.state.dispatch(removeGoalAction(goal.id))
-        }
 
         addItem = (e) => {
             e.preventDefault()
@@ -191,6 +199,14 @@
                 name,
                 complete: false
             }))
+        }
+
+        removeItem = (goal) => {
+            this.props.store.dispatch(removeGoalAction(goal.id))
+        }
+
+        toggleItem = (id) => {
+            this.props.store.dispatch(toggleGoalAction(id))
         }
 
         render(){
@@ -208,8 +224,9 @@
                     Add Goal
                     </button>
                     <List
-                        remove={this.removeItem} 
                         items={this.props.goals}
+                        remove={this.removeItem} 
+                        toggle={this.toggleItem}
                     />
                 </div>
             )
