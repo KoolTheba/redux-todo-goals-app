@@ -50,6 +50,39 @@ function receiveDataAction(todos, goals){
     }
 }
 
+function handleDeleteTodo (todo) {
+    return (dispatch) => {
+        dispatch(removeTodoAction(todo.id))
+        return API.deleteTodo(todo.id)
+            .catch(() => {
+                dispatch(addTodoAction(todo))
+                alert('An error ocurred. Try again!')
+            })
+    }
+}
+
+function handleDeleteGoal (goal) {
+    return (dispatch) => {
+        dispatch(removeGoalAction(goal.id))
+        return API.deleteGoal((goal.id))
+        .catch(() => {
+            dispatch(addGoalAction(goal))
+            alert('An error occurred. Try again!')
+        })
+    }
+}
+
+function handleAddGoal (value, cb) {
+    return (dispatch) => {
+        return API.saveGoal(value)
+        .then((goal) => {
+            dispatch(addGoalAction(goal))
+            cb()
+        })
+        .catch(() => alert('There was an error. Try again!'))
+    }
+}
+
 // Middlewares
 const checker = (store) => (next) => (action) => {
     if(
@@ -77,6 +110,14 @@ const logger = (store) => (next) => (action) => {
     console.groupEnd()
 
     return result
+}
+
+const thunk = (store) => (next) => (action) => {
+    if(typeof action === 'function'){
+        return action(store.dispatch)
+    }
+
+    return next(action)
 }
 
 // Reducer functions
@@ -123,5 +164,4 @@ const store = Redux.createStore(Redux.combineReducers({
     todos,
     goals,
     loading
-}), Redux.applyMiddleware(checker, logger))
-
+}), Redux.applyMiddleware(thunk, checker, logger))
