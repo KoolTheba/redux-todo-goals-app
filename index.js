@@ -50,6 +50,28 @@ function receiveDataAction(todos, goals){
     }
 }
 
+function handleAddTodo (value, cb){
+    return (dispatch) => {
+        return API.saveTodo(value)
+        .then((todo) => {
+            dispatch(addTodoAction(todo))
+            cb()
+        })
+        .catch(() => alert('There was an error. Try again!'))
+    }
+}
+
+function handleToggle (id){
+    return (dispatch) => {
+        dispatch(toggleTodoAction(id))
+        return API.saveTodoToggle((id))
+            .catch(() => {
+                dispatch(toggleTodoAction(id))
+                alert('An error ocurred. Try again!')
+        })
+    }
+}
+
 function handleDeleteTodo (todo) {
     return (dispatch) => {
         dispatch(removeTodoAction(todo.id))
