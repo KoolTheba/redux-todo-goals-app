@@ -113,12 +113,3 @@ const store = Redux.createStore(Redux.combineReducers({
     goals,
 }), Redux.applyMiddleware(checker, logger))
 
-store.subscribe(() => {
-    const { goals, todos } = store.getState()
-
-    document.getElementById('todos').innerHTML = ''
-    document.getElementById('goals').innerHTML = ''
-
-    goals.forEach(addGoalToDOM)
-    todos.forEach(addTodoToDOM)
-})
