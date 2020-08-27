@@ -105,6 +105,17 @@ function handleAddGoal (value, cb) {
     }
 }
 
+function handleInitialData () {
+    return (dispatch) => {
+        return Promise.all([
+            API.fetchTodos(),
+            API.fetchGoals(),
+        ]).then(([todos, goals]) => {
+            dispatch(receiveDataAction(todos, goals))
+        })
+    }
+}
+
 // Middlewares
 const checker = (store) => (next) => (action) => {
     if(
