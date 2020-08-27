@@ -42,13 +42,6 @@ function removeGoalAction(id){
     }
 }
 
-function toggleGoalAction(id){
-    return{
-        type: TOGGLE_GOAL,
-        id,
-    }
-}
-
 function receiveDataAction(todos, goals){
     return {
         type: RECEIVE_DATA,
@@ -110,10 +103,6 @@ function goals (state = [], action){
             return state.concat([action.goal])
         case REMOVE_GOAL:
             return state.filter(goal => goal.id !== action.id)
-        case TOGGLE_GOAL:
-            return state.map(goal => goal.id !== action.id ? goal :
-                Object.assign({}, goal, {complete: !goal.complete})
-            )
         case RECEIVE_DATA:
             return action.goals
         default:

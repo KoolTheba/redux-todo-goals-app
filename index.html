@@ -27,7 +27,7 @@
                 {props.items.map((item) => (
                     <li key={item.id}>
                         <span 
-                            onClick={() => props.toggle(item.id)}
+                            onClick={() => props.toggle && props.toggle(item.id)}
                             style={{textDecoration:
                                 item.complete
                                 ? 'line-through' 
@@ -119,10 +119,6 @@
             })
         }
 
-        toggleItem = (id) => {
-            this.props.store.dispatch(toggleGoalAction(id))
-        }
-
         render(){
             return(
                 <div>
@@ -140,7 +136,6 @@
                     <List
                         items={this.props.goals}
                         remove={this.removeItem} 
-                        toggle={this.toggleItem}
                     />
                 </div>
             )
