@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import List from './List'
 import {
     handleAddTodo,
@@ -7,48 +7,40 @@ import {
     handleToggle
 } from '../actions/todos'
 
-class Todos extends React.Component {
+export default function Todos(){
+    const input = React.useRef('')
+    const dispatch = useDispatch()
+    const todos = useSelector((state) => state.todos)
 
-    addItem = (e) => {
+    const addItem = (e) => {
         e.preventDefault()
-
-        this.props.dispatch(handleAddTodo(
-            this.input.value,
-            () => this.input.value = ''
+        dispatch(handleAddTodo(
+            input.current.value,
+            () => input.current.value = ''
         ))
     }
 
-    removeItem = (todo) => {
-        this.props.dispatch(handleDeleteTodo(todo))
-    }
+    const removeItem = (todo) => dispatch(handleDeleteTodo(todo))
 
-    toggleItem = (id) => {
-        this.props.dispatch(handleToggle(id))
-    }
+    const toggleItem = (id) => dispatch(handleToggle(id))
 
-    render(){
-        return(
-            <div>
-                <h1>Todo List</h1>
-                <input 
-                    type='text'
-                    placeholder='Add Todo'
-                    ref={(input) => this.input = input}
-                />
-                <button
-                    onClick={this.addItem}
-                >Add Todo
-                </button>
-                <List 
-                    items={this.props.todos}
-                    remove={this.removeItem}
-                    toggle={this.toggleItem}
-                />
-            </div>
-        )
-    }
+    return(
+        <div>
+        <h1>Todo List</h1>
+        <input 
+            type='text'
+            placeholder='Add Todo'
+            ref={input}
+        />
+        <button
+            onClick={addItem}
+        >Add Todo
+        </button>
+        <List 
+            items={todos}
+            remove={removeItem}
+            toggle={toggleItem}
+        />
+        </div>
+    )
 }
-
-export default connect((state) => ({
-    todos: state.todos
-}))(Todos)
