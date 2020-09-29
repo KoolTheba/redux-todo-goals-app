@@ -6,6 +6,7 @@ import {
     handleDeleteTodo,
     handleToggle
 } from '../actions/todos'
+import './Todos.css'
 
 export default function Todos(){
     const input = React.useRef('')
@@ -25,14 +26,16 @@ export default function Todos(){
     const toggleItem = (id) => dispatch(handleToggle(id))
 
     return(
-        <div>
-        <h1>Todo List</h1>
-        <input 
+        <div className='Todos'>
+        <h3>Todos</h3>
+        <input
+            className='todo-input'
             type='text'
             placeholder='Add Todo'
             ref={input}
         />
         <button
+            className='add-todo'
             onClick={addItem}
         >Add Todo
         </button>

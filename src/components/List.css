@@ -1,0 +1,28 @@
+.ItemList {
+    margin: 1rem 0;
+    list-style-type: none;
+    padding: 0;
+    overflow: scroll;
+}
+  
+.Item {
+    font-size: 1.2rem;
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #eceff1;
+}
+
+.Item span {
+    cursor: pointer;
+}
+
+.remove-btn {
+    margin-left: 0.75rem;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    color: #00897b;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    color: red;
+}

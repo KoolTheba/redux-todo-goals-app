@@ -1,0 +1,47 @@
+h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 3rem;
+    position: relative;
+    color: #00897b;
+    text-align: left;
+}
+
+.todo-input {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.5rem 0.5rem;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #90a4ae;
+}
+  
+.todo-input:focus {
+    border-bottom: 1px solid #00897b;
+    outline: 0;
+}
+  
+.todo-input:focus::placeholder {
+    color: #00897b;
+}
+
+.todo-input::placeholder {
+    color: #90a4ae;
+    font-weight: 100;
+}
+
+.add-todo {
+    margin-top: 0.75rem;
+    border: 1px solid #00897b;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.add-todo:hover {
+    background-color:orange;
+}
+  
+.add-todo:focus {
+    background-color: #00897b;
+}
