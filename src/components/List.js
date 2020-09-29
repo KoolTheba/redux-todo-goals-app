@@ -1,10 +1,13 @@
 import * as React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import './List.css'
 
 export default function List(props){
     return(
-        <ul>
+        <ul className='ItemList'>
             {props.items.map((item) => (
-                <li key={item.id}>
+                <li className='Item' key={item.id}>
                     <span 
                         onClick={() => props.toggle && props.toggle(item.id)}
                         style={{textDecoration:
@@ -13,7 +16,11 @@ export default function List(props){
                             : 'none' }}
                     >{item.name}
                     </span>
-                    <button onClick={() => props.remove(item)}>Remove</button>
+                    <button
+                        className='remove-btn'
+                        onClick={() => props.remove(item)}
+                    ><FontAwesomeIcon icon={faTrashAlt} />
+                    </button>
                 </li>
             ))}
         </ul>

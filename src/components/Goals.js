@@ -5,6 +5,7 @@ import {
     handleAddGoal,
     handleDeleteGoal,
 } from '../actions/goals'
+import './Goals.css'
 
 export default function Goals (){
     const input = React.useRef('')
@@ -22,15 +23,18 @@ export default function Goals (){
     const removeItem = (goal) => dispatch(handleDeleteGoal(goal))
 
     return(
-        <div>
-            <h1>Goals</h1>
-            <input 
+        <div className='Todos'>
+            <h3>Goals</h3>
+            <input
+                className='goals-input'
                 type='text'
                 placeholder='Add Goal'
                 ref={input}
             />
-            <button onClick={addItem}>
-            Add Goal
+            <button 
+                className='add-goal' 
+                onClick={addItem}
+            >Add Goal
             </button>
             <List
                 items={goals}
