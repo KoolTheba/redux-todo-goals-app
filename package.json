@@ -1,5 +1,5 @@
 {
-  "homepage":"https://kooltheba.github.io/redux-todo-goals-app",
+  "homepage": "https://kooltheba.github.io/redux-todo-goals-app",
   "name": "todos-goals",
   "version": "1.0.1",
   "dependencies": {
