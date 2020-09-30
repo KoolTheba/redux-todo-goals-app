@@ -1,7 +1,7 @@
 {
   "homepage":"https://kooltheba.github.io/redux-todo-goals-app",
   "name": "todos-goals",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.31",
     "@fortawesome/free-solid-svg-icons": "^5.15.0",
