@@ -2,6 +2,7 @@
 Todo/Goals application made with 💜  and Redux 🏆 
 
 > Release v1.0.0. Sept' 2020 💪
+
 > Release v1.0.1. Sept' 2020 💪 (deploy a React app in GitHub pages)
 
 ## What is it and what can I do with it?
