@@ -2,6 +2,7 @@
 Todo/Goals application made with 💜  and Redux 🏆 
 
 > Release v1.0.0. Sept' 2020 💪
+> Release v1.0.1. Sept' 2020 💪 (deploy a React app in GitHub pages)
 
 ## What is it and what can I do with it?
 Its name doesn't lie! This app is meant to keep your todos and goals in a cute list with which you can interact.
@@ -45,6 +46,9 @@ Once running in your localhost, you can:
 ## Dependencies
 - Redux
 - Font-awesome
+
+### Dev-dependencies
+- gh-pages
 
 ## Acknowledgement 😻
 Thanks a lot for the styling 💅 inspiration to [@YuneVK](https://github.com/YuneVK) and thank you for the Redux course to [@tylermcginnis](https://github.com/tylermcginnis)
