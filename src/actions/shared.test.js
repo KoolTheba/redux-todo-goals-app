@@ -18,7 +18,7 @@ describe('receiveData', () => {
     test('returns an action with type `RECEIVE_DATA`', () => {
         const action = receiveData(todos, goals)
         expect(action).toEqual({
-            "type": "RECEIVE_DATA",
+            "type": RECEIVE_DATA,
             todos,
             goals
         })

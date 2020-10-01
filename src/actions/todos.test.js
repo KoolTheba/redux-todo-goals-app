@@ -4,7 +4,8 @@ import {
     TOGGLE_TODO,
     addTodo,
     removeTodo,
-    toggleTodo
+    toggleTodo,
+    handleAddTodo
 } from './todos'
 
 const todo = 'Walk the dog'
@@ -14,8 +15,8 @@ describe('addTodo', () => {
     test('returns an action with type `ADD_TODO`', () => {
         const action = addTodo(todo)
         expect(action).toEqual({
-            "todo": "Walk the dog", 
-            "type": "ADD_TODO"
+            todo, 
+            "type": ADD_TODO
         })
         expect(action.type).toEqual(ADD_TODO)
     })
@@ -25,8 +26,8 @@ describe('removeTodo', () => {
     test('returns an action with type `REMOVE_TODO`', () => {
         const action = removeTodo(id)
         expect(action).toEqual({
-            "id": "TBR987",
-            "type": "REMOVE_TODO"
+            id,
+            "type": REMOVE_TODO
         })
         expect(action.type).toEqual(REMOVE_TODO)
     })
