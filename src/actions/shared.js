@@ -1,4 +1,4 @@
-import API from 'goals-todos-api'
+import API from 'todos-goals-api-localstorage'
 
 export const RECEIVE_DATA = 'RECEIVE_DATA'
 

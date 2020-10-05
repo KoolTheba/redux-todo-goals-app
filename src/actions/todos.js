@@ -1,4 +1,4 @@
-import API from 'goals-todos-api'
+import API from 'todos-goals-api-localstorage'
 
 export const ADD_TODO = 'ADD_TODO'
 export const REMOVE_TODO = 'REMOVE_TODO'
