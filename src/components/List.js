@@ -11,7 +11,7 @@ export default function List(props){
                     <span 
                         onClick={() => props.toggle && props.toggle(item.id)}
                         style={{textDecoration:
-                            item.complete
+                            item.completed
                             ? 'line-through' 
                             : 'none' }}
                     >{item.name}

@@ -14,7 +14,7 @@ export default function todos (state = [], action) {
             return state.filter(todo => todo.id !== action.id)
         case TOGGLE_TODO:
             return state.map(todo => todo.id !== action.id ? todo : 
-                Object.assign({}, todo, {complete: !todo.complete})    
+                Object.assign({}, todo, {completed: !todo.completed})    
             )
         case RECEIVE_DATA:
             return action.todos
