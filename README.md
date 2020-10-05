@@ -5,7 +5,13 @@ Todo/Goals application made with 💜  and Redux 🏆
 
 > Release v1.0.1. Sept' 2020 💪 (deploy a React app in GitHub pages)
 
-## What is it and what can I do with it?
+> Release v1.0.2 Oct' 2020 🏆 (created and added new api that provides data persistance new feature)
+
+## Data persistance feature (new! 🥳)
+🚀  I have completely refactored the api, and created a new one, with support to localstorage, so now you get data persistance for free! 😎
+> 👉 Check my home-baked api [todos-goals-localsotrage](https://www.npmjs.com/package/todos-goals-api-localstorage) in npm
+
+## What is it and what can I do with this app?
 Its name doesn't lie! This app is meant to keep your todos and goals in a cute list with which you can interact.
 Once running in your localhost, you can:
 - ➕ Add a todo or a goal to an individual list
@@ -16,7 +22,7 @@ Once running in your localhost, you can:
   <img alt="Aplicación Todo" height="600" src="other/todo_goals_app_screenshot.png">
 </p>
 
-> As this app is open source and has a Affero AGPL license, you can fork it, change it, style it 💅, etc
+> As this app is open source and has a AGPL license, you can fork it, change it, style it 💅, etc
 
 ## How to use it?
 ### ⚡️ Live
@@ -47,6 +53,7 @@ Once running in your localhost, you can:
 ## Dependencies
 - Redux
 - Font-awesome
+- 👉 [todos-goals-api-localstorage](https://www.npmjs.com/package/todos-goals-api-localstorage)
 
 ### Dev-dependencies
 - gh-pages
